@@ -41,11 +41,10 @@ const Header = ({
               }}
             />
             {searchInput !== "" && (
-              <button className="search-close-icon" id="search-close-icon">
+              <button className="search-close-icon" id="search-close-icon" onClick={() => setSearchInput?.("")}>
                 <img
                   src={Cross}
                   alt="cross icon"
-                  onClick={() => setSearchInput?.("")}
                 />
               </button>
             )}

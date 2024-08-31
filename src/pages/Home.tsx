@@ -12,7 +12,7 @@ const Home = () => {
 
   async function fetchPokemonDataBeforeRedirect(id: string) {
     try {
-      const [pokemon, pokemonSpecies] = await Promise.all([
+        await Promise.all([
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => {
           res.json();
         }),
@@ -76,7 +76,7 @@ const Home = () => {
               {filterPokemon.map((pokemon: any) => {
                 const pokemonID = pokemon.url.split("/")[6];
                 return (
-                  <div
+                  <button
                     className="list-item"
                     onClick={() => handleCardClick(pokemonID)}
                     key={pokemon.id}
@@ -93,7 +93,7 @@ const Home = () => {
                     <div className="name-wrap">
                       <p className="body3-fonts">#{pokemon.name}</p>
                     </div>
-                  </div>
+                  </button>
                 );
               })}
             </div>
