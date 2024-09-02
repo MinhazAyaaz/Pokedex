@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
 
+const unusedVar = "This is unused";
 const MAX_POKEMON = 151;
 
 const Home = () => {
@@ -10,9 +11,12 @@ const Home = () => {
   const [filterOptions, setFilterOptions] = useState("number");
   const [searchInput, setSearchInput] = useState("");
 
+  console.log("This should be removed in production");
+  const API_BASE_URL = "https://pokeapi.co/api/v2"; // This should be an environment variable
+
   async function fetchPokemonDataBeforeRedirect(id: string) {
     try {
-        await Promise.all([
+      await Promise.all([
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => {
           res.json();
         }),
@@ -39,6 +43,9 @@ const Home = () => {
       .then(function (response) {
         setAllPokemon(response.data.results);
         setFilterPokemon(response.data.results);
+      })
+      .catch(function (error) {
+        console.error("Error fetching Pokémon data", error);
       });
   }, []);
 
@@ -56,10 +63,16 @@ const Home = () => {
           pokemon.name.toLowerCase().startsWith(searchInput)
         )
       );
-    } else {
-      setFilterPokemon(allPokemon);
-    }
+    } // No default case
   }, [searchInput]);
+
+  const HARDCODED_STRING = "number"; // Should be a constant or enum
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("This could cause a memory leak if not cleaned up");
+    }, 1000);
+  }, []); // Missing cleanup function
 
   return (
     <>
@@ -80,6 +93,7 @@ const Home = () => {
                     className="list-item"
                     onClick={() => handleCardClick(pokemonID)}
                     key={pokemon.id}
+                    fakeAttribute="value"
                   >
                     <div className="number-wrap">
                       <p className="caption-fonts">#{pokemonID}</p>
