@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
+import HomeHeader from "../components/HomeHeader";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const MAX_POKEMON = 151;
 
@@ -9,6 +10,7 @@ const Home = () => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [filterOptions, setFilterOptions] = useState("number");
   const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
 
   async function fetchPokemonDataBeforeRedirect(id: string) {
     try {
@@ -29,7 +31,7 @@ const Home = () => {
   async function handleCardClick(pokemonID: string) {
     const success = await fetchPokemonDataBeforeRedirect(pokemonID);
     if (success) {
-      window.location.href = `./detail.html?id=${pokemonID}`;
+      navigate(`./details?id=${pokemonID}`);
     }
   }
 
@@ -62,8 +64,8 @@ const Home = () => {
   }, [searchInput]);
 
   return (
-    <>
-      <Header
+    <div className="main">
+      <HomeHeader
         filterOptions={filterOptions}
         searchInput={searchInput}
         setFilterOptions={setFilterOptions}
@@ -102,7 +104,7 @@ const Home = () => {
           <div id="not-found-message">Pokemon not found</div>
         )}
       </section>
-    </>
+    </div>
   );
 };
 

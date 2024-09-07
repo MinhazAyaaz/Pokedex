@@ -10,7 +10,7 @@ interface HeaderProps {
   setFilterOptions?: (e: any) => void;
 }
 
-const Header = ({
+const HomeHeader = ({
   filterOptions,
   searchInput,
   setSearchInput,
@@ -22,13 +22,13 @@ const Header = ({
 
   return (
     <header className="header-home">
-      <div className="container">
+      <div className="container flex gap-16 mt-6">
         <div className="logo-wrapper">
           <img src={Pokeball} alt="Pokeball" />
           <h1>Pokedex</h1>
         </div>
         <div className="search-wrapper">
-          <div className="search-wrap">
+          <div className="search-wrap w-[350px]">
             <img src={Search} alt="Search" className="search-icon" />
             <input
               type="text"
@@ -96,4 +96,4 @@ const Header = ({
   );
 };
 
-export default Header;
+export default HomeHeader;

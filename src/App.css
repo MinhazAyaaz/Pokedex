@@ -240,19 +240,20 @@
     background-color: var(--grayscale-white);
     box-shadow: var(--drop-shadow-inner);
     border-radius: 0.75rem;
-    min-height: calc(85.5% - 1rem);
-    width: calc(100% - 1rem);
-    max-height: 100px;
+    height: 85vh;
+    display: flex;
+    width: 90%;
     overflow-y: auto;
   }
   
   .list-wrapper {
+    width: 100%;
     margin: 1rem 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1rem;
   }
   
   .list-item {
@@ -329,8 +330,8 @@
   }
   
   .detail-img-wrapper {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     margin: auto;
     position: relative;
     z-index: 3;
@@ -342,23 +343,24 @@
   }
   
   .detail-card-detail-wrapper {
-    border-radius: 8px;
+    width: 100%;
+    border-radius: 8px 8px 0px 0px;
     background-color: var(--grayscale-white);
-    box-shadow: var(--drop-shadow-inner);
     padding: 56px 20px 20px 20px;
     margin-top: -50px;
     display: flex;
-    flex-direction: column;
+    items-align: center;
+    justify-content: center;
     position: relative;
     z-index: 2;
   }
   
   .power-wrapper {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
   }
   
   .power-wrapper > p {
